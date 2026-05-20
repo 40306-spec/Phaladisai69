@@ -1,14 +1,125 @@
-<div style="font-family:Arial;padding:20px;max-width:500px;margin:auto">
+<!DOCTYPE html>
+<html lang="th">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
+
+<title>ระบบน้องรหัส</title>
+
+<style>
+
+body{
+
+margin:0;
+padding:0;
+
+font-family:Arial;
+
+background:
+linear-gradient(
+135deg,
+#89f7fe,
+#66a6ff
+);
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.card{
+
+background:white;
+
+width:90%;
+max-width:500px;
+
+padding:30px;
+
+border-radius:20px;
+
+box-shadow:
+0 10px 30px
+rgba(
+0,0,0,.2
+);
+
+text-align:center;
+
+}
+
+h2{
+margin-top:0;
+}
+
+select{
+
+width:100%;
+
+padding:12px;
+
+margin-top:10px;
+
+border-radius:10px;
+
+}
+
+button{
+
+margin-top:15px;
+
+padding:12px 20px;
+
+border:none;
+
+border-radius:10px;
+
+background:#4f46e5;
+
+color:white;
+
+font-size:16px;
+
+cursor:pointer;
+
+}
+
+#result{
+
+margin-top:25px;
+
+font-size:20px;
+
+font-weight:bold;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
 
 <h2>ระบบน้องรหัส</h2>
 
-<select id="person"></select>
+<select id="person">
+</select>
 
 <button onclick="showResult()">
 ดูผล
 </button>
 
-<h3 id="result"></h3>
+<div id="result">
+</div>
 
 </div>
 
@@ -17,32 +128,45 @@
 let people=[];
 
 for(let i=1;i<=40;i++){
+
 people.push({
 name:`6/2 เลขที่ ${i}`
 });
+
 }
 
 for(let i=1;i<=40;i++){
+
 people.push({
 name:`6/7 เลขที่ ${i}`
 });
+
 }
 
 for(let i=1;i<=39;i++){
+
 people.push({
 name:`6/9 เลขที่ ${i}`
 });
+
 }
 
 function shuffle(arr){
 
-for(let i=arr.length-1;i>0;i--){
+for(
+let i=arr.length-1;
+i>0;
+i--
+){
 
-let j=Math.floor(
-Math.random()*(i+1)
+let j=
+Math.floor(
+Math.random()*
+(i+1)
 );
 
-[arr[i],arr[j]]=
+[arr[i],arr[j]]
+=
 [arr[j],arr[i]];
 
 }
@@ -64,21 +188,34 @@ assign=
 JSON.parse(saved);
 
 }
+
 else{
 
 assign=[];
 
-for(let i=0;i<16;i++)
+for(
+let i=0;
+i<16;
+i++
+)
+
 assign.push(3);
 
-for(let i=0;i<103;i++)
+for(
+let i=0;
+i<103;
+i++
+)
+
 assign.push(4);
 
 shuffle(assign);
 
 localStorage.setItem(
 "nongsave",
-JSON.stringify(assign)
+JSON.stringify(
+assign
+)
 );
 
 }
@@ -88,28 +225,43 @@ document.getElementById(
 "person"
 );
 
-people.forEach((p,i)=>{
+people.forEach(
+(p,i)=>{
 
 select.innerHTML+=
-`<option value="${i}">
+`
+<option value="${i}">
 ${p.name}
-</option>`;
+</option>
+`;
 
-});
+}
+
+);
 
 function showResult(){
 
-let i=select.value;
+let i=
+select.value;
 
-document.getElementById(
+document
+.getElementById(
 "result"
-).innerHTML=
+)
 
-people[i].name+
-"<br><br>ได้น้องรหัส "+
-assign[i]+
-" คน";
+.innerHTML=
+
+`
+${people[i].name}
+<br><br>
+ได้น้องรหัส
+${assign[i]}
+คน
+`;
 
 }
 
 </script>
+
+</body>
+</html>
